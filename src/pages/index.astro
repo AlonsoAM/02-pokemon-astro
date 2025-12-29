@@ -1,29 +1,10 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import type { PokemonListResponse } from "../interfaces/pokemon-list-response";
-import PokemonCard from "../components/pokemons/PokemonCard.astro";
 
-const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon");
-if (!respuesta.ok) {
-  throw new Error("Failed to fetch data");
-}
-const datos = (await respuesta.json()) as PokemonListResponse;
-console.log("Datos de la API:", datos);
-
-const title: string = "Pokemon Static | Home";
+// Redireccionar a la primera página de la paginación
+return Astro.redirect("/pokemons/1");
 ---
 
-<MainLayout title={title}>
+<MainLayout title="Pokemon Static | Home">
   <h1 class="text-3xl text-center">Listado de Pokemons</h1>
-  <hr />
-  <section
-    aria-label="Listado de Pokemons"
-    class="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 gap-4 mt-5"
-  >
-    {
-      datos.results.map((pokemon) => (
-        <PokemonCard name={pokemon.name} url={pokemon.url} />
-      ))
-    }
-  </section>
 </MainLayout>
