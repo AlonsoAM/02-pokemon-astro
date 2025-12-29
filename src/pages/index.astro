@@ -1,16 +1,10 @@
 ---
-import "../styles/global.css";
+import MainLayout from "../layouts/MainLayout.astro";
+
+// Redireccionar a la primera página de la paginación
+return Astro.redirect("/pokemons/1");
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1 class="text-3xl text-blue-500">Astro</h1>
-  </body>
-</html>
+<MainLayout title="Pokemon Static | Home">
+  <h1 class="text-3xl text-center">Listado de Pokemons</h1>
+</MainLayout>
